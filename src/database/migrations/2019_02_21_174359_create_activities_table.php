@@ -15,8 +15,10 @@ class CreateActivitiesTable extends Migration
     {
         Schema::create('activities', function (Blueprint $table) {
             $table->increments('id');
-            $table->morphs('causer')->nullable();
-            $table->morphs('subject')->nullable();
+            $table->integer('subject_id')->nullable();
+            $table->string('subject_type')->nullable();
+            $table->integer('causer_id')->nullable();
+            $table->string('causer_type')->nullable();
             $table->string('type');
             $table->timestamps();
         });
