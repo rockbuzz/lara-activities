@@ -15,7 +15,7 @@ class ActivitiesServiceProvider extends ServiceProvider
         ], 'migrations');
 
         $this->publishes([
-            __DIR__ . '/../config/laravel-activities.php' => config_path('laravel-activities')
+            __DIR__ . '/../config/laravel-activities.php' => config_path('laravel-activities.php')
         ], 'config');
     }
 
