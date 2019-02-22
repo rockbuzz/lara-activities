@@ -2,7 +2,9 @@
 
 namespace Phwebs\Activities\Traits;
 
-use ReflectionClass;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Collection;
+use Phwebs\Activities\Activities;
 use Fico7489\Laravel\Pivot\Traits\PivotEventTrait;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 
@@ -12,54 +14,22 @@ trait RecordsActivity
 
     public static function bootRecordsActivity()
     {
-        if (auth()->guest()) {
-            return;
-        }
-
-        foreach (static::getActivityToRecord() as $event) {
-            static::$event(function ($model, $relationName = null, $pivotIds = null) use ($event) {
-                $model->recordActivity(
-                    $model->getActivityType($event, $relationName, $pivotIds)
-                );
+        static::getEventsToRecord()->each(function ($event) {
+            return static::$event(function (Model $model, string $relationName = null, array $pivotIds = null) use ($event) {
+                app(Activities::class)
+                    ->activityTo($model)
+                    ->recordActivity($model, $event, $relationName, $pivotIds);
             });
-        }
+        });
     }
 
-    private function recordActivity(string $type)
+    protected static function getEventsToRecord(): Collection
     {
-        $this->activity()->create([
-            'user_id' => auth()->id(),
-            'type' => $type
-        ]);
+        return collect(config('activities.events'));
     }
 
-    private static function getActivityToRecord(): array
+    private function activities(): MorphMany
     {
-        return config('laravel-activities.events');
-    }
-
-    private function activity(): MorphMany
-    {
-        return $this->morphMany(config('laravel-activities.model'), 'subject');
-    }
-
-    private function getActivityType($event, $relationName = null, $pivotIds = null): string
-    {
-        $identifier = config('laravel-activities.identifier.' . $event);
-        $className = (new ReflectionClass($this))->getShortName();
-
-        $string = config('laravel-activities.string.model');
-
-        if ($relationName && $pivotIds) {
-            $pivotIds = implode(',', $pivotIds);
-            $string = config('laravel-activities.string.pivot');
-        }
-
-        return strtolower(strtr($string, [
-            ':identifier' => $identifier,
-            ':class' => $className,
-            ':relation' => $relationName,
-            ':values' => $pivotIds
-        ]));
+        return $this->morphMany(config('activities.model'), 'subject');
     }
 }

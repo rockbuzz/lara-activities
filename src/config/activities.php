@@ -17,6 +17,8 @@ return [
 
     'model' => \Phwebs\Activities\Models\Activity::class,
 
+    'auth_driver' => null,
+
     /*
     |--------------------------------------------------------------------------
     | Activity Events

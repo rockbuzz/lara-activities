@@ -15,12 +15,14 @@ class ActivitiesServiceProvider extends ServiceProvider
         ], 'migrations');
 
         $this->publishes([
-            __DIR__ . '/../config/laravel-activities.php' => config_path('laravel-activities.php')
+            __DIR__ . '/../config/activities.php' => config_path('activities.php')
         ], 'config');
     }
 
     public function register()
     {
-        $this->mergeConfigFrom(__DIR__ . '/../config/laravel-activities.php', 'laravel-activities');
+        $this->app->bind(Activities::class);
+
+        $this->mergeConfigFrom(__DIR__ . '/../config/activities.php', 'activities');
     }
 }

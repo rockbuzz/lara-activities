@@ -6,8 +6,9 @@ namespace Phwebs\Activities\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
+use Phwebs\Activities\Contracts\Activity as ActivityInterface;
 
-class Activity extends Model
+class Activity extends Model implements ActivityInterface
 {
     protected $guarded = [];
 
@@ -18,8 +19,8 @@ class Activity extends Model
         return $this->morphTo();
     }
 
-//    public function user(): BelongsTo
-//    {
-//        return $this->belongsTo(User::class);
-//    }
+    public function causer(): MorphTo
+    {
+        return $this->morphTo();
+    }
 }
