@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4951170b67f7470e3b6f1a4bae2b4c95",
+    "content-hash": "f6ffe36899de92465848c7a9fdd3f7f8",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -281,16 +281,16 @@
         },
         {
             "name": "fico7489/laravel-pivot",
-            "version": "dev-master",
+            "version": "3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/fico7489/laravel-pivot.git",
-                "reference": "c4af598dbc40d096752cd8cd8576a59cff01c4bd"
+                "reference": "d5fecfbf15a5ba83d188f1ac28fddc262ee9bb6c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fico7489/laravel-pivot/zipball/c4af598dbc40d096752cd8cd8576a59cff01c4bd",
-                "reference": "c4af598dbc40d096752cd8cd8576a59cff01c4bd",
+                "url": "https://api.github.com/repos/fico7489/laravel-pivot/zipball/d5fecfbf15a5ba83d188f1ac28fddc262ee9bb6c",
+                "reference": "d5fecfbf15a5ba83d188f1ac28fddc262ee9bb6c",
                 "shasum": ""
             },
             "require": {
@@ -327,7 +327,7 @@
                 "laravel pivot events",
                 "laravel sync events"
             ],
-            "time": "2018-11-03T11:12:44+00:00"
+            "time": "2018-11-03T11:07:53+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -1100,16 +1100,16 @@
         },
         {
             "name": "opis/closure",
-            "version": "3.1.5",
+            "version": "3.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/opis/closure.git",
-                "reference": "41f5da65d75cf473e5ee582df8fc7f2c733ce9d6"
+                "reference": "ccb8e3928c5c8181c76cdd0ed9366c5bcaafd91b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/opis/closure/zipball/41f5da65d75cf473e5ee582df8fc7f2c733ce9d6",
-                "reference": "41f5da65d75cf473e5ee582df8fc7f2c733ce9d6",
+                "url": "https://api.github.com/repos/opis/closure/zipball/ccb8e3928c5c8181c76cdd0ed9366c5bcaafd91b",
+                "reference": "ccb8e3928c5c8181c76cdd0ed9366c5bcaafd91b",
                 "shasum": ""
             },
             "require": {
@@ -1157,7 +1157,7 @@
                 "serialization",
                 "serialize"
             ],
-            "time": "2019-01-14T14:45:33+00:00"
+            "time": "2019-02-22T10:30:00+00:00"
         },
         {
             "name": "paragonie/random_compat",
@@ -4553,9 +4553,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "fico7489/laravel-pivot": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
