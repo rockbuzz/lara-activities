@@ -72,7 +72,7 @@ class Activities
             ':identifier' => $identifier,
             ':class' => $className,
             ':relation' => $relationName,
-            ':values' => $pivotIds
+            ':ids' => $pivotIds
         ]));
     }
 
