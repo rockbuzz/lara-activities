@@ -20,7 +20,7 @@ class ActivityTest extends TestCase
             'password' => bcrypt('123456')
         ]);
 
-//        $this->actingAs($user);
+        $this->actingAs($user);
 
         $post = Post::create([
             'title' => 'Title Test',
@@ -29,8 +29,8 @@ class ActivityTest extends TestCase
 
         $this->assertDatabaseHas('activities', [
             'type' => 'criado-post',
-//            'causer_type' => User::class,
-//            'causer_id' => auth()->id(),
+            'causer_type' => User::class,
+            'causer_id' => auth()->id(),
             'subject_id' => $post->id,
             'subject_type' => Post::class
         ]);
