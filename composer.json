@@ -1,6 +1,6 @@
 {
   "name": "rockbuzz/lara-activities",
-  "description": "Laravel monitoring to actions in models.",
+  "description": "Lara Activities is a Laravel 5.5 or higher package that monitors activities for creating, editing, and deleting features, including manipulations of related tables.",
   "keywords": [
     "laravel",
     "activities",
