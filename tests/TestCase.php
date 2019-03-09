@@ -1,13 +1,13 @@
 <?php
 
-namespace Phwebs\Activities\Test;
+namespace Tests;
 
 use Orchestra\Testbench\TestCase as OrchestraTestCase;
-use Phwebs\Activities\ActivitiesServiceProvider;
+use Rockbuzz\LaraActivities\ActivitiesServiceProvider;
 
 class TestCase extends OrchestraTestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 

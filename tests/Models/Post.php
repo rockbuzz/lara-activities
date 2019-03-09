@@ -1,9 +1,9 @@
 <?php
 
-namespace Phwebs\Activities\Test\Models;
+namespace Tests\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Phwebs\Activities\Traits\RecordsActivity;
+use Rockbuzz\LaraActivities\Traits\RecordsActivity;
 
 class Post extends Model
 {

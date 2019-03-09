@@ -1,11 +1,11 @@
 <?php
 
-namespace Phwebs\Activities\Test\Unit\Models;
+namespace Tests\Unit\Models;
 
-use Phwebs\Activities\Models\Activity;
-use Phwebs\Activities\Test\Models\Post;
-use Phwebs\Activities\Test\Models\User;
-use Phwebs\Activities\Test\TestCase;
+use Rockbuzz\LaraActivities\Models\Activity;
+use Tests\Models\Post;
+use Tests\Models\User;
+use Tests\TestCase;
 
 class ActivityTest extends TestCase
 {

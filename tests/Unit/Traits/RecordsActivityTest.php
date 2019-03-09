@@ -1,8 +1,8 @@
 <?php
 
-namespace Phwebs\Activities\Test\Unit\Traits;
+namespace Tests\Unit\Traits;
 
-use Phwebs\Activities\Test\TestCase;
+use Tests\TestCase;
 
 class RecordsActivityTest extends TestCase
 {

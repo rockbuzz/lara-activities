@@ -1,10 +1,10 @@
 <?php
 
-namespace Phwebs\Activities\Traits;
+namespace Rockbuzz\LaraActivities\Traits;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
-use Phwebs\Activities\Activities;
+use Rockbuzz\LaraActivities\Activities;
 use Fico7489\Laravel\Pivot\Traits\PivotEventTrait;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 
@@ -15,7 +15,11 @@ trait RecordsActivity
     public static function bootRecordsActivity()
     {
         static::getEventsToRecord()->each(function ($event) {
-            return static::$event(function (Model $model, string $relationName = null, array $pivotIds = null) use ($event) {
+            return static::$event(function (
+                Model $model,
+                string $relationName = null,
+                array $pivotIds = null
+            ) use ($event) {
                 app(Activities::class)
                     ->activityTo($model)
                     ->recordActivity($model, $event, $relationName, $pivotIds);

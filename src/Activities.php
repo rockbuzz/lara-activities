@@ -1,12 +1,12 @@
 <?php
 
-namespace Phwebs\Activities;
+namespace Rockbuzz\LaraActivities;
 
 use ReflectionClass;
 use Exception;
 use Illuminate\Auth\AuthManager;
 use Illuminate\Database\Eloquent\Model;
-use Phwebs\Activities\Contracts\Activity as ActivityInterface;
+use Rockbuzz\LaraActivities\Contracts\Activity as ActivityInterface;
 
 class Activities
 {

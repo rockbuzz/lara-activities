@@ -1,6 +1,6 @@
 <?php
 
-namespace Phwebs\Activities\Test\Models;
+namespace Tests\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 

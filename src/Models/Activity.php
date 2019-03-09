@@ -1,12 +1,10 @@
 <?php
 
-namespace Phwebs\Activities\Models;
+namespace Rockbuzz\LaraActivities\Models;
 
-//use App\User;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
-use Phwebs\Activities\Contracts\Activity as ActivityInterface;
+use Rockbuzz\LaraActivities\Contracts\Activity as ActivityInterface;
 
 class Activity extends Model implements ActivityInterface
 {
