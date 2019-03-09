@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'model' => \Phwebs\Activities\Models\Activity::class,
+    'model' => \Rockbuzz\LaraActivities\Models\Activity::class,
 
     'auth_driver' => null,
 

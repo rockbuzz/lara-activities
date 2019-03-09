@@ -10,7 +10,7 @@
          processIsolation="false"
          stopOnFailure="false">
     <testsuites>
-        <testsuite name="MyPackage Test Suite">
+        <testsuite name="Activities Test Suite">
             <directory>tests</directory>
         </testsuite>
     </testsuites>
