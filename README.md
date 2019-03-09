@@ -4,7 +4,7 @@ Lara Activities is a Laravel 5.5 or higher package that monitors activities for 
 
 ## Requirements
 
-PHP: >=7.0
+PHP: >=7.1
 
 ## Install
 
