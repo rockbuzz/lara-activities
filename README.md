@@ -2,6 +2,8 @@
 
 Lara Activities is a Laravel 5.5 or higher package that monitors activities for creating, editing, and deleting features, including manipulations of related tables.
 
+[![Build Status](https://travis-ci.org/rockbuzz/lara-activities.svg?branch=master)](https://travis-ci.org/rockbuzz/lara-activities)
+
 ## Requirements
 
 PHP: >=7.1
@@ -12,12 +14,9 @@ PHP: >=7.1
 $ composer require rockbuzz/lara-activities
 ```
 
-## Usage
+## Configuration
+```php
 
-```code
-$ docker-compose up -d --build
-$ docker exec -it activities_app composer test
-$ docker exec -it activities_app composer cs
 ```
 
 ## License

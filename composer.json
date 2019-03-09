@@ -28,7 +28,7 @@
     }
   },
   "require": {
-    "php": ">=7.0",
+    "php": ">=7.1",
     "fico7489/laravel-pivot": "~3.0.0"
   },
   "require-dev": {
