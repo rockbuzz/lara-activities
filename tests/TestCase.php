@@ -3,7 +3,7 @@
 namespace Tests;
 
 use Orchestra\Testbench\TestCase as OrchestraTestCase;
-use Rockbuzz\LaraActivities\ActivitiesServiceProvider;
+use Rockbuzz\LaraActivities\ServiceProvider;
 
 class TestCase extends OrchestraTestCase
 {
@@ -33,6 +33,6 @@ class TestCase extends OrchestraTestCase
 
     protected function getPackageProviders($app)
     {
-        return [ActivitiesServiceProvider::class];
+        return [ServiceProvider::class];
     }
 }

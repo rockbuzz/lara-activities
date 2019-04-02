@@ -2,9 +2,9 @@
 
 namespace Rockbuzz\LaraActivities;
 
-use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\ServiceProvider as SupportServiceProvider;
 
-class ActivitiesServiceProvider extends ServiceProvider
+class ServiceProvider extends SupportServiceProvider
 {
     public function boot()
     {

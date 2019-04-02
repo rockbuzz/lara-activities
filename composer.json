@@ -43,7 +43,7 @@
   "extra": {
     "laravel": {
       "providers": [
-        "Rockbuzz\\LaraActivities\\ActivitiesServiceProvider"
+        "Rockbuzz\\LaraActivities\\ServiceProvider"
       ]
     }
   }

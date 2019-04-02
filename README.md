@@ -15,10 +15,20 @@ $ composer require rockbuzz/lara-activities
 ```
 
 ## Configuration
-```php
 
+```bash
+$ php artisan vendor:publish --provider="Rockbuzz\LaraActivities\ServiceProvider"
+$ php artisan migrate
+```
+
+## Usage
+```php
+class Post extends Model
+{
+    use Rockbuzz\LaraActivities\Traits\RecordsActivity;
+}
 ```
 
 ## License
 
-The Tdw RDB is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+The Lara Activities is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
