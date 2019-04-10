@@ -10,6 +10,10 @@ class ServiceProvider extends SupportServiceProvider
     {
         $this->loadMigrationsFrom(__DIR__ . '/database/migrations');
 
+        $this->loadRoutesFrom(__DIR__.'/routes.php');
+
+        $this->loadViewsFrom(__DIR__.'/views', 'activities');
+
         $this->publishes([
             __DIR__ . '/database/migrations/' => database_path('migrations')
         ], 'migrations');
@@ -17,6 +21,10 @@ class ServiceProvider extends SupportServiceProvider
         $this->publishes([
             __DIR__ . '/config/activities.php' => config_path('activities.php')
         ], 'config');
+
+        $this->publishes([
+            __DIR__.'/path/to/views' => resource_path('views/vendor/activities'),
+        ], 'views');
     }
 
     public function register()
