@@ -2,7 +2,7 @@
 
 namespace Rockbuzz\LaraActivities\Controllers;
 
-use App\Http\Controllers\Controller;
+use Illuminate\Routing\Controller;
 use Rockbuzz\LaraActivities\Models\Activity;
 
 class ActivitiesController extends Controller
