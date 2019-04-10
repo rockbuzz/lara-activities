@@ -82,5 +82,9 @@ return [
     'string' => [
         'model' => ':identifier-:class',
         'pivot' => ':identifier-:relation=:ids'
+    ],
+
+    'routes' => [
+        'index' => 'admin/atividades'
     ]
 ];
