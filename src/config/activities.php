@@ -82,5 +82,14 @@ return [
     'string' => [
         'model' => ':identifier-:class',
         'pivot' => ':identifier-:relation=:ids'
+    ],
+
+    'routes' => [
+        'index' => [
+            'uri' => 'admin/atividades',
+            'as' => 'admin.activities',
+            'middleware' => ['web', 'auth'],
+            'uses' => 'Rockbuzz\LaraActivities\Controllers\ActivitiesController@index'
+        ]
     ]
 ];
