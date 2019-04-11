@@ -6,5 +6,8 @@
 
     <file>src</file>
 
+    <exclude-pattern>*/src/database/*$</exclude-pattern>
+    <exclude-pattern>*/src/views/*$</exclude-pattern>
+
     <rule ref="PSR2"/>
 </ruleset>
