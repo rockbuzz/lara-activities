@@ -17,8 +17,25 @@ $ composer require rockbuzz/lara-activities
 ## Configuration
 
 ```bash
-$ php artisan vendor:publish --provider="Rockbuzz\LaraActivities\ServiceProvider"
+$ php artisan vendor:publish --provider="Rockbuzz\LaraActivities\ServiceProvider" --tag=config
 $ php artisan migrate
+```
+```php
+'routes' => [
+    'index' => [
+        'uri' => 'admin/atividades',
+        'as' => 'admin.activities',
+        'middleware' => ['web', 'auth'],
+        'uses' => 'Rockbuzz\LaraActivities\Controllers\ActivitiesController@index'
+    ]
+]
+```
+
+## Optional
+
+```bash
+$ php artisan vendor:publish --provider="Rockbuzz\LaraActivities\ServiceProvider" --tag=migrations
+$ php artisan vendor:publish --provider="Rockbuzz\LaraActivities\ServiceProvider" --tag=views
 ```
 
 ## Usage
