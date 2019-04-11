@@ -28,20 +28,8 @@
                     <tbody>
                     @forelse($activities as $activity)
                         <tr>
-                            <td>
-                                @if($activity->user)
-                                    {{ $activity->user->email }}
-                                @else
-                                    removido
-                                @endif
-                            </td>
-                            <td>
-                                @if($activity->subject)
-                                    {{ $activity->subject_type }} | ID: {{ $activity->subject->id }}
-                                @else
-                                    removido
-                                @endif
-                            </td>
+                            <td>{{ $activity->causer()->isNotEmpty() ? $activity->causer->email : 'removido'}}</td>
+                            <td>{{ ltrim(strrchr($activity->subject_type, "\\"), "\\") . ': ' . $activity->subject->id }}</td>
                             <td>{{ $activity->type }}</td>
                             <td>{{ $activity->updated_at->format('d/m/Y H:i:s') }}</td>
                         </tr>

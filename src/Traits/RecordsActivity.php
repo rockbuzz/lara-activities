@@ -32,7 +32,7 @@ trait RecordsActivity
         return collect(config('activities.events'));
     }
 
-    private function activities(): MorphMany
+    public function activities(): MorphMany
     {
         return $this->morphMany(config('activities.model'), 'subject');
     }
