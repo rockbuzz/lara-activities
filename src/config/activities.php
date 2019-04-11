@@ -85,6 +85,11 @@ return [
     ],
 
     'routes' => [
-        'index' => 'admin/atividades'
+        'index' => [
+            'uri' => 'admin/atividades',
+            'as' => 'admin.activities',
+            'middleware' => ['web', 'auth'],
+            'uses' => 'Rockbuzz\LaraActivities\Controllers\ActivitiesController@index'
+        ]
     ]
 ];
