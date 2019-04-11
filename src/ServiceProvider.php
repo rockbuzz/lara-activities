@@ -23,7 +23,7 @@ class ServiceProvider extends SupportServiceProvider
         ], 'config');
 
         $this->publishes([
-            __DIR__.'/path/to/views' => resource_path('views/vendor/activities'),
+            __DIR__.'/views' => resource_path('views/vendor/activities'),
         ], 'views');
     }
 
