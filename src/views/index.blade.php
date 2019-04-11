@@ -1,12 +1,17 @@
-@extends('layouts.admin')
+@extends(config('activities.views.layout'))
 
 @section('content-header')
     <h1>Atividades de Recursos</h1>
-    @component('layouts.includes.admin.breadcrum')
+    <ol class="breadcrumb">
+        <li>
+            <a href="/admin/dashboard">
+                <i class="fa fa-dashboard"></i>Dashboard
+            </a>
+        </li>
         <li class="active">
             <a><i class="{{ config('style.icons.resources.activities-resources') }}"></i>Atividades de Recursos</a>
         </li>
-    @endcomponent
+    </ol>
 @endsection
 
 @section('content')
@@ -28,7 +33,7 @@
                     <tbody>
                     @forelse($activities as $activity)
                         <tr>
-                            <td>{{ $activity->causer()->isNotEmpty() ? $activity->causer->email : 'removido'}}</td>
+                            <td>{{ $activity->causer ? $activity->causer->email : ''}}</td>
                             <td>{{ ltrim(strrchr($activity->subject_type, "\\"), "\\") . ': ' . $activity->subject->id }}</td>
                             <td>{{ $activity->type }}</td>
                             <td>{{ $activity->updated_at->format('d/m/Y H:i:s') }}</td>

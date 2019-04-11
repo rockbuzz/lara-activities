@@ -91,5 +91,8 @@ return [
             'middleware' => ['web', 'auth'],
             'uses' => 'Rockbuzz\LaraActivities\Controllers\ActivitiesController@index'
         ]
+    ],
+    'views' => [
+        'layout' => 'layouts.admin'
     ]
 ];
