@@ -12,6 +12,8 @@ trait RecordsActivity
 {
     use PivotEventTrait;
 
+    public $old = [];
+
     public static function bootRecordsActivity()
     {
         static::getEventsToRecord()->each(function ($event) {
@@ -20,6 +22,9 @@ trait RecordsActivity
                 string $relationName = null,
                 array $pivotIds = null
             ) use ($event) {
+                if ('updated' === $event) {
+                    $model->old = $model->getOriginal();
+                }
                 app(Activities::class)
                     ->activityTo($model)
                     ->recordActivity($model, $event, $relationName, $pivotIds);

@@ -12,6 +12,8 @@ class Activity extends Model implements ActivityInterface
 
     protected $with = ['subject'];
 
+    protected $casts = ['changes' => 'array'];
+
     public function subject(): MorphTo
     {
         return $this->morphTo();

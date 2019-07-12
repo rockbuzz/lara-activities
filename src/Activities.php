@@ -45,15 +45,26 @@ class Activities
 
     public function recordActivity(Model $model, string $event, string $relationName = null, array $pivotIds = null)
     {
+    
         $activity = $this->activity;
 
         $activity->type = $this->getType($model, $event, $relationName, $pivotIds);
+
+        $activity->changes = $this->activityChanges($event, $model);
 
         $activity->save();
 
         $this->activity = null;
 
         return $activity;
+    }
+
+    protected function activityChanges($event, $model)
+    {
+        return 'updated' === $event ? [
+            'before' => array_except(array_diff($model->old, $model->getAttributes()), 'updated_at'),
+            'after' => array_except($model->getChanges(), 'updated_at')
+        ] : null;
     }
 
     protected function getType(Model $model, string $event, string $relationName = null, array $pivotIds = null): string

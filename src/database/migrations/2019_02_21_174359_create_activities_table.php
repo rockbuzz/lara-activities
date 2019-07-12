@@ -20,6 +20,7 @@ class CreateActivitiesTable extends Migration
             $table->integer('causer_id')->nullable();
             $table->string('causer_type')->nullable();
             $table->string('type');
+            $table->text('changes')->nullable();
             $table->timestamps();
         });
     }
