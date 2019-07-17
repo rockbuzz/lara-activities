@@ -18,7 +18,6 @@ $ composer require rockbuzz/lara-activities
 
 ```bash
 $ php artisan vendor:publish --provider="Rockbuzz\LaraActivities\ServiceProvider" --tag=config
-$ php artisan migrate
 ```
 ```php
 'routes' => [
@@ -34,11 +33,16 @@ $ php artisan migrate
 ## Optional
 
 ```bash
-$ php artisan vendor:publish --provider="Rockbuzz\LaraActivities\ServiceProvider" --tag=migrations
 $ php artisan vendor:publish --provider="Rockbuzz\LaraActivities\ServiceProvider" --tag=views
 ```
 
 ## Usage
+
+```bash
+$ php artisan vendor:publish --provider="Rockbuzz\LaraActivities\ServiceProvider" --tag=migrations
+$ php artisan migrate
+```
+
 ```php
 class Post extends Model
 {
