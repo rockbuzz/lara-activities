@@ -27,6 +27,7 @@
                         <th>Usuário</th>
                         <th>Recurso</th>
                         <th>Acão</th>
+                        <th>Dados</th>
                         <th>Atualizado</th>
                     </tr>
                     </thead>
@@ -36,6 +37,7 @@
                             <td>{{ $activity->causer ? $activity->causer->email : ''}}</td>
                             <td>{{ ltrim(strrchr($activity->subject_type, "\\"), "\\") . ': ' . $activity->subject->id }}</td>
                             <td>{{ $activity->type }}</td>
+                            <td>{{ json_encode($activity->changes) }}</td>
                             <td>{{ $activity->updated_at->format('d/m/Y H:i:s') }}</td>
                         </tr>
                     @empty
