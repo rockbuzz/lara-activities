@@ -62,7 +62,7 @@ class Activities
     protected function activityChanges($event, $model)
     {
         return 'updated' === $event ? [
-            'before' => array_except(array_diff($model->old, $model->getAttributes()), 'updated_at'),
+            'before' => array_except(array_diff_assoc($model->old, $model->getAttributes()), 'updated_at'),
             'after' => array_except($model->getChanges(), 'updated_at')
         ] : null;
     }

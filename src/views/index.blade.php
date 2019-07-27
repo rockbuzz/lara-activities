@@ -28,7 +28,7 @@
                         <th>Recurso</th>
                         <th>Acão</th>
                         <th>Dados</th>
-                        <th>Atualizado</th>
+                        <th>Data</th>
                     </tr>
                     </thead>
                     <tbody>

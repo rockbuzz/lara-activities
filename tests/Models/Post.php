@@ -9,5 +9,7 @@ class Post extends Model
 {
     use RecordsActivity;
 
-    protected $fillable = ['title', 'content'];
+    protected $fillable = ['title', 'content', 'published_at'];
+
+    protected $dates = ['published_at'];
 }

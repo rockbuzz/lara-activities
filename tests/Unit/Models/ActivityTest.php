@@ -55,15 +55,19 @@ class ActivityTest extends TestCase
 
         $this->actingAs($user);
 
+        $publishedAtBefore = now();
         \DB::table('posts')->insert([
             'title' => 'Title Test',
-            'content' => 'Content Test'
+            'content' => 'Content Test',
+            'published_at' => $publishedAtBefore
         ]);
 
         $post = Post::whereTitle('Title Test')->firstOrFail();
 
+        $publishedAtAfter = now()->addMinute();
         $post->update([
-            'title' => 'Title Change'
+            'title' => 'Title Change',
+            'published_at' => $publishedAtAfter
         ]);
 
         $this->assertDatabaseHas('activities', [
@@ -73,8 +77,8 @@ class ActivityTest extends TestCase
             'subject_id' => $post->id,
             'subject_type' => Post::class,
             'changes' => json_encode([
-                'before' => ['title' => 'Title Test'],
-                'after' => ['title' => 'Title Change']
+                'before' => ['title' => 'Title Test', 'published_at' => $publishedAtBefore->toDateTimeString()],
+                'after' => ['title' => 'Title Change', 'published_at' => $publishedAtAfter->toDateTimeString()]
             ])
         ]);
     }
