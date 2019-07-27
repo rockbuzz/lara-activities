@@ -20,6 +20,15 @@
             <h3 class="box-title">Atividades de Recursos Registradas</h3>
         </div>
         <div class="box-body">
+            <div style="display:block; margin-bottom:10px;">
+                <a href="/admin/atividades?type=criado" class="btn btn-default btn-flat">Criado</a>
+                <a href="/admin/atividades?type=atualizado" class="btn btn-default btn-flat">Atualizado</a>
+                <a href="/admin/atividades?type=salvo" class="btn btn-default btn-flat">Salvo</a>
+                <a href="/admin/atividades?type=deletado" class="btn btn-default btn-flat">Deletado</a>
+                <a href="/admin/atividades?type=restaurado" class="btn btn-default btn-flat">Restaurado</a>
+                <a href="/admin/atividades?type=recuperado" class="btn btn-default btn-flat">Recuperado</a>
+                <a href="/admin/atividades?type=anexado" class="btn btn-default btn-flat">Anexado</a>
+            </div>
             <div class="table-responsive">
                 <table class="table table-bordered table-striped">
                     <thead>
