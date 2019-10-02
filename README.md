@@ -50,6 +50,13 @@ class Post extends Model
 }
 ```
 
+config in activities.php to search by subject id
+```php
+'subjects_class' => [
+    'App\Post', 'App\Comment'
+],
+```
+
 ## License
 
 The Lara Activities is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
