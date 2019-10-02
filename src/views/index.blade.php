@@ -20,14 +20,22 @@
             <h3 class="box-title">Atividades de Recursos Registradas</h3>
         </div>
         <div class="box-body">
-            <div style="display:block; margin-bottom:10px;">
-                <a href="/admin/atividades?type=criado" class="btn btn-default btn-flat">Criado</a>
-                <a href="/admin/atividades?type=atualizado" class="btn btn-default btn-flat">Atualizado</a>
-                <a href="/admin/atividades?type=salvo" class="btn btn-default btn-flat">Salvo</a>
-                <a href="/admin/atividades?type=deletado" class="btn btn-default btn-flat">Deletado</a>
-                <a href="/admin/atividades?type=restaurado" class="btn btn-default btn-flat">Restaurado</a>
-                <a href="/admin/atividades?type=recuperado" class="btn btn-default btn-flat">Recuperado</a>
-                <a href="/admin/atividades?type=anexado" class="btn btn-default btn-flat">Anexado</a>
+            <div class="row">
+                <div class="col-md-9">
+                    
+                </div>
+                <div class="col-md-3">
+                <form action="{{ url()->current() }}" method="GET">
+                        <div class="input-group">
+                            <input type="text" name="search" placeholder="ID do recurso" class="form-control">
+                                <span class="input-group-btn">
+                                <button type="submit" class="btn btn-default btn-flat">
+                                    <span class="fa fa-search"></span>
+                                </button>
+                                </span>
+                        </div>
+                    </form>
+                </div>
             </div>
             <div class="table-responsive">
                 <table class="table table-bordered table-striped">
@@ -57,7 +65,7 @@
                     </tbody>
                 </table>
                 @if($activities instanceof \Illuminate\Pagination\LengthAwarePaginator )
-                    {{ $activities->links() }}
+                    {{ $activities->appends(request()->query())->links() }}
                 @endif
             </div>
         </div>

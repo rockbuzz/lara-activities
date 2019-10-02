@@ -2,6 +2,11 @@
 
 return [
 
+    //to search by subject id
+    'subjects_class' => [
+        //App\Post
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | Activity Model

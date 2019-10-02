@@ -9,13 +9,19 @@ class ActivitiesController extends Controller
 {
     public function index()
     {
-        $activities = Activity::latest()->paginate(30);
+        $builder = Activity::latest();
 
-        if ($type = request('type')) {
-            $activities = Activity::where('type', 'like', "%{$type}%")
-                ->latest()
-                ->paginate(30);
-        }
+        if ($search = request('search')) {
+            $builder = $builder->whereHasMorph(
+                'subject',
+                config('activities.subjects_class'),
+                function ($query) use ($search) {
+                    $query->where('id', $search);
+                }
+            );           
+        }        
+
+        $activities = $builder->paginate(50);
 
         return view('activities::index', compact('activities'));
     }
