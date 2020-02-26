@@ -14,6 +14,8 @@ trait RecordsActivity
 
     public $old = [];
 
+    public $activitiesTableName = 'activities';
+
     public static function bootRecordsActivity()
     {
         static::getEventsToRecord()->each(function ($event) {

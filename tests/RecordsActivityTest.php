@@ -1,8 +1,7 @@
 <?php
 
-namespace Tests\Unit\Traits;
+namespace Tests;
 
-use Tests\TestCase;
 use Tests\Models\User;
 use Tests\Models\Post;
 use Rockbuzz\LaraActivities\Models\Activity;
@@ -97,6 +96,37 @@ class RecordsActivityTest extends TestCase
         $post->delete();
 
         $this->assertDatabaseHas('activities', [
+            'type' => 'deletado-post',
+            'causer_type' => User::class,
+            'causer_id' => auth()->id(),
+            'subject_id' => $post->id,
+            'subject_type' => Post::class,
+            'changes' => null
+        ]);
+    }
+
+    public function testItRecordsActivityInOtherTable()
+    {
+        $user = User::create([
+            'name' => 'User Test',
+            'email' => 'user.test@email.com',
+            'password' => bcrypt('123456')
+        ]);
+
+        $this->actingAs($user);
+
+        \DB::table('posts')->insert([
+            'title' => 'Title Test',
+            'content' => 'Content Test'
+        ]);
+
+        $post = Post::whereTitle('Title Test')->firstOrFail();
+
+        $post->activitiesTableName = 'post_activities';
+
+        $post->delete();
+
+        $this->assertDatabaseHas('post_activities', [
             'type' => 'deletado-post',
             'causer_type' => User::class,
             'causer_id' => auth()->id(),

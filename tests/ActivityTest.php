@@ -1,12 +1,11 @@
 <?php
 
-namespace Tests\Unit\Models;
+namespace Tests;
 
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Rockbuzz\LaraActivities\Models\Activity;
 use Tests\Models\Post;
 use Tests\Models\User;
-use Tests\TestCase;
 
 class ActivityTest extends TestCase
 {

@@ -52,6 +52,8 @@ class Activities
 
         $activity->changes = $this->activityChanges($event, $model);
 
+        $activity->setTable($model->activitiesTableName);
+
         $activity->save();
 
         $this->activity = null;
