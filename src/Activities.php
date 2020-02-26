@@ -99,7 +99,7 @@ class Activities
             return $model;
         }
 
-        throw new Exception('Not Determinet User');
+        throw new Exception('Not determined user');
     }
 
     protected function getActivity(): ActivityInterface

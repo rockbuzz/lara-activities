@@ -2,6 +2,7 @@
 
 namespace Tests\Unit\Models;
 
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Rockbuzz\LaraActivities\Models\Activity;
 use Tests\Models\Post;
 use Tests\Models\User;
@@ -9,109 +10,56 @@ use Tests\TestCase;
 
 class ActivityTest extends TestCase
 {
-    /**
-     * @test
-     */
-    public function itRecordsActivityWhenAPostIsCreated()
+    public function testActivityCasts()
     {
-        $user = User::create([
-            'name' => 'User Test',
-            'email' => 'user.test@email.com',
-            'password' => bcrypt('123456')
-        ]);
-
-        $this->actingAs($user);
-
         $post = Post::create([
             'title' => 'Title Test',
             'content' => 'Content Test'
         ]);
 
-        $this->assertDatabaseHas('activities', [
+        $user = User::create([
+            'name' => 'User Test',
+            'email' => 'user.test@email.com',
+            'password' => bcrypt('123456')
+        ]);
+
+        $activity = Activity::create([
             'type' => 'criado-post',
+            'causer_id' => $user->id,
             'causer_type' => User::class,
-            'causer_id' => auth()->id(),
             'subject_id' => $post->id,
             'subject_type' => Post::class,
             'changes' => null
         ]);
 
-        $activity = Activity::first();
-
-        $this->assertEquals($activity->subject->id, $post->id);
-        $this->assertNull($activity->changes);
+        $this->assertEquals(['id' => 'int', 'changes' => 'array'], $activity->getCasts());
     }
 
-    /**
-     * @test
-     */
-    public function itRecordsActivityWhenAPostIsUpdated()
+    public function testActivityHasSubjectAndCauser()
     {
-        $user = User::create([
-            'name' => 'User Test',
-            'email' => 'user.test@email.com',
-            'password' => bcrypt('123456')
-        ]);
-
-        $this->actingAs($user);
-
-        $publishedAtBefore = now();
-        \DB::table('posts')->insert([
-            'title' => 'Title Test',
-            'content' => 'Content Test',
-            'published_at' => $publishedAtBefore
-        ]);
-
-        $post = Post::whereTitle('Title Test')->firstOrFail();
-
-        $publishedAtAfter = now()->addMinute();
-        $post->update([
-            'title' => 'Title Change',
-            'published_at' => $publishedAtAfter
-        ]);
-
-        $this->assertDatabaseHas('activities', [
-            'type' => 'atualizado-post',
-            'causer_type' => User::class,
-            'causer_id' => auth()->id(),
-            'subject_id' => $post->id,
-            'subject_type' => Post::class,
-            'changes' => json_encode([
-                'before' => ['title' => 'Title Test', 'published_at' => $publishedAtBefore->toDateTimeString()],
-                'after' => ['title' => 'Title Change', 'published_at' => $publishedAtAfter->toDateTimeString()]
-            ])
-        ]);
-    }
-
-    /**
-     * @test
-     */
-    public function itRecordsActivityWhenAPostIsDeleted()
-    {
-        $user = User::create([
-            'name' => 'User Test',
-            'email' => 'user.test@email.com',
-            'password' => bcrypt('123456')
-        ]);
-
-        $this->actingAs($user);
-
-        \DB::table('posts')->insert([
+        $post = Post::create([
             'title' => 'Title Test',
             'content' => 'Content Test'
         ]);
 
-        $post = Post::whereTitle('Title Test')->firstOrFail();
+        $user = User::create([
+            'name' => 'User Test',
+            'email' => 'user.test@email.com',
+            'password' => bcrypt('123456')
+        ]);
 
-        $post->delete();
-
-        $this->assertDatabaseHas('activities', [
-            'type' => 'deletado-post',
+        $activity = Activity::create([
+            'type' => 'criado-post',
+            'causer_id' => $user->id,
             'causer_type' => User::class,
-            'causer_id' => auth()->id(),
             'subject_id' => $post->id,
             'subject_type' => Post::class,
             'changes' => null
         ]);
+
+        $this->assertInstanceOf(MorphTo::class, $activity->subject());
+        $this->assertEquals($post->id, $activity->subject->id);
+        $this->assertInstanceOf(MorphTo::class, $activity->causer());
+        $this->assertEquals($user->id, $activity->causer->id);
     }
 }
