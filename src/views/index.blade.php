@@ -22,13 +22,13 @@
         <div class="box-body">
             <div class="row">
                 <div class="col-md-9">
-                    
+
                 </div>
                 <div class="col-md-3">
-                <form action="{{ url()->current() }}" method="GET">
+                    <form action="{{ url()->current() }}" method="GET">
                         <div class="input-group">
                             <input type="text" name="search" placeholder="ID do recurso" class="form-control">
-                                <span class="input-group-btn">
+                            <span class="input-group-btn">
                                 <button type="submit" class="btn btn-default btn-flat">
                                     <span class="fa fa-search"></span>
                                 </button>
@@ -40,28 +40,28 @@
             <div class="table-responsive">
                 <table class="table table-bordered table-striped">
                     <thead>
-                    <tr>
-                        <th>Usuário</th>
-                        <th>Recurso</th>
-                        <th>Acão</th>
-                        <th>Dados</th>
-                        <th>Data</th>
-                    </tr>
+                        <tr>
+                            <th>Usuário</th>
+                            <th>Recurso</th>
+                            <th>Acão</th>
+                            <th>Dados</th>
+                            <th>Data</th>
+                        </tr>
                     </thead>
                     <tbody>
-                    @forelse($activities as $activity)
-                        <tr>
-                            <td>{{ $activity->causer ? $activity->causer->email : ''}}</td>
-                            <td>{{ ltrim(strrchr($activity->subject_type, "\\"), "\\") . ': ' . $activity->subject->id }}</td>
-                            <td>{{ $activity->type }}</td>
-                            <td>{{ $activity->changes ? json_encode($activity->changes) : '' }}</td>
-                            <td>{{ $activity->updated_at->format('d/m/Y H:i:s') }}</td>
-                        </tr>
-                    @empty
-                        <tr class="text-center">
-                            <td colspan="4">Nenhuma atividade cadastrada até o momento.</td>
-                        </tr>
-                    @endforelse
+                        @forelse($activities as $activity)
+                            <tr>
+                                <td>{{ $activity->causer ? $activity->causer->email : ''}}</td>
+                                <td>{{ ltrim(strrchr($activity->subject_type, "\\"), "\\") . ': ' . $activity->subject_id }}</td>
+                                <td>{{ $activity->type }}</td>
+                                <td>{{ $activity->changes ? json_encode($activity->changes) : '' }}</td>
+                                <td>{{ $activity->updated_at->format('d/m/Y H:i:s') }}</td>
+                            </tr>
+                        @empty
+                            <tr class="text-center">
+                                <td colspan="4">Nenhuma atividade cadastrada até o momento.</td>
+                            </tr>
+                        @endforelse
                     </tbody>
                 </table>
                 @if($activities instanceof \Illuminate\Pagination\LengthAwarePaginator )
