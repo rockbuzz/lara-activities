@@ -18,8 +18,8 @@ class ActivitiesController extends Controller
                 function ($query) use ($search) {
                     $query->where('id', $search);
                 }
-            );           
-        }        
+            );
+        }
 
         $activities = $builder->paginate(50);
 
