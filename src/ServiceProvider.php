@@ -13,10 +13,10 @@ class ServiceProvider extends SupportServiceProvider
         $localPath = __DIR__ . '/database/migrations/';
 
         if (! $this->hasMigrationInProject($projectPath, $filesystem)) {
-            $this->loadMigrationsFrom($localPath . '2019_02_21_000000_create_activities_table.php.stub');
+            $this->loadMigrationsFrom($localPath . '2019_02_21_000000_create_activities_table.php');
 
             $this->publishes([
-                $localPath . '2019_02_21_000000_create_activities_table.php.stub' =>
+                $localPath . '2019_02_21_000000_create_activities_table.php' =>
                     $projectPath . now()->format('Y_m_d_his') . '_create_activities_table.php'
             ], 'migrations');
         }
