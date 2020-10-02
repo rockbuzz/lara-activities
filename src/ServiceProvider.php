@@ -23,7 +23,7 @@ class ServiceProvider extends SupportServiceProvider
 
         $this->publishes([
             __DIR__ . '/config/activities.php' => config_path('activities.php')
-        ], 'config'); 
+        ], 'config');
 
         $this->loadRoutesFrom(__DIR__.'/routes.php');
 
