@@ -1,6 +1,6 @@
 {
   "name": "rockbuzz/lara-activities",
-  "description": "Lara Activities is a Laravel 5.5 or higher package that monitors activities for creating, editing, and deleting features, including manipulations of related tables.",
+  "description": "Lara Activities is a package that monitors activities for creating, editing, and deleting features, including manipulations of related tables.",
   "keywords": [
     "laravel",
     "activities",
@@ -10,11 +10,11 @@
   "authors": [
     {
       "name": "TiagoDevWeb",
-      "email": "tiago.desenvolvedorweb@gmail.com"
+      "email": "tiago@rockbuzz.com.br"
     },
     {
       "name": "Paulo Henrique P. Scheuermann",
-      "email": "paetzold44@gmail.com"
+      "email": "paulo@rockbuzz.com.br"
     }
   ],
   "autoload": {

@@ -1,6 +1,6 @@
 # Lara Activities
 
-Lara Activities is a Laravel 5.5 or higher package that monitors activities for creating, editing, and deleting features, including manipulations of related tables.
+Lara Activities is a Laravel package that monitors activities for creating, editing, and deleting features, including manipulations of related tables.
 
 [![Build Status](https://travis-ci.org/rockbuzz/lara-activities.svg?branch=master)](https://travis-ci.org/rockbuzz/lara-activities)
 
@@ -13,16 +13,44 @@ PHP: >=7.1
 ```bash
 $ composer require rockbuzz/lara-activities
 ```
+```bash
+$ php artisan vendor:publish --provider="Rockbuzz\LaraActivities\ServiceProvider" --tag=migrations
+```
+```bash
+$ php artisan migrate
+```
+## Usage
+
+```php
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+use Rockbuzz\LaraActivities\Traits\RecordsActivity;
+
+class Post extends Model
+{
+    use RecordsActivity;
+}
+```
 
 ## Configuration
 
 ```bash
 $ php artisan vendor:publish --provider="Rockbuzz\LaraActivities\ServiceProvider" --tag=config
 ```
+You can define the layout of the views
+```php
+'views' => [
+    'layout' => 'layouts.admin'
+]
+```
+
+You can override routes, controllers and middleware
 ```php
 'routes' => [
     'index' => [
-        'uri' => 'admin/atividades',
+        'uri' => 'admin/activities',
         'as' => 'admin.activities',
         'middleware' => ['web', 'auth'],
         'uses' => 'Rockbuzz\LaraActivities\Controllers\ActivitiesController@index'
@@ -30,31 +58,17 @@ $ php artisan vendor:publish --provider="Rockbuzz\LaraActivities\ServiceProvider
 ]
 ```
 
-## Optional
-
-```bash
-$ php artisan vendor:publish --provider="Rockbuzz\LaraActivities\ServiceProvider" --tag=views
-```
-
-## Usage
-
-```bash
-$ php artisan vendor:publish --provider="Rockbuzz\LaraActivities\ServiceProvider" --tag=migrations
-$ php artisan migrate
-```
-
-```php
-class Post extends Model
-{
-    use Rockbuzz\LaraActivities\Traits\RecordsActivity;
-}
-```
-
-config in activities.php to search by subject id
+You can define which models will be searched in the activity table
 ```php
 'subjects_class' => [
     'App\Post', 'App\Comment'
 ],
+
+```
+
+You can also customize the views
+```bash
+$ php artisan vendor:publish --provider="Rockbuzz\LaraActivities\ServiceProvider" --tag=views
 ```
 
 ## License
