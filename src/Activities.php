@@ -2,6 +2,8 @@
 
 namespace Rockbuzz\LaraActivities;
 
+use Illuminate\Support\Arr;
+
 use ReflectionClass;
 use Exception;
 use Illuminate\Auth\AuthManager;
@@ -64,8 +66,8 @@ class Activities
     protected function activityChanges($event, $model)
     {
         return 'updated' === $event ? [
-            'before' => array_except(array_diff_assoc($model->old, $model->getAttributes()), 'updated_at'),
-            'after' => array_except($model->getChanges(), 'updated_at')
+            'before' => Arr::except(array_diff_assoc($model->old, $model->getAttributes()), 'updated_at'),
+            'after' => Arr::except($model->getChanges(), 'updated_at')
         ] : null;
     }
 
