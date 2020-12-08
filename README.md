@@ -6,7 +6,7 @@ Lara Activities is a Laravel package that monitors activities for creating, edit
 
 ## Requirements
 
-PHP: >=7.1
+PHP: >=7.2.5
 
 ## Install
 
