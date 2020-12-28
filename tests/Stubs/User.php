@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Models;
+namespace Tests\Stubs;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 

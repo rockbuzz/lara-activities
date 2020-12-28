@@ -5,6 +5,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    environment:
+      - XDEBUG_MODE=coverage
     restart: always
     volumes:
       - ./:/var/www

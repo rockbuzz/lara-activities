@@ -2,8 +2,7 @@
 
 namespace Tests;
 
-use Tests\Models\User;
-use Tests\Models\Post;
+use Tests\Stubs\{Post, User};
 use Rockbuzz\LaraActivities\Models\Activity;
 
 class RecordsActivityTest extends TestCase

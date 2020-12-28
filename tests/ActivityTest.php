@@ -2,10 +2,9 @@
 
 namespace Tests;
 
-use Illuminate\Database\Eloquent\Relations\MorphTo;
+use Tests\Stubs\{Post, User};
 use Rockbuzz\LaraActivities\Models\Activity;
-use Tests\Models\Post;
-use Tests\Models\User;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 class ActivityTest extends TestCase
 {
