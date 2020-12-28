@@ -31,6 +31,14 @@ use Rockbuzz\LaraActivities\Traits\RecordsActivity;
 class Post extends Model
 {
     use RecordsActivity;
+
+    //optional define activity table
+    //public function __construct(array $attributes = [])
+    //{
+    //    parent::__construct($attributes);
+    //
+    //    $this->setActivityTable('post_activities');
+    //}
 }
 ```
 

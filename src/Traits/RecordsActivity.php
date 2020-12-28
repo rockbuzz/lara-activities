@@ -2,9 +2,9 @@
 
 namespace Rockbuzz\LaraActivities\Traits;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 use Rockbuzz\LaraActivities\Activities;
+use Illuminate\Database\Eloquent\Model;
 use Fico7489\Laravel\Pivot\Traits\PivotEventTrait;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 
@@ -14,7 +14,17 @@ trait RecordsActivity
 
     public $old = [];
 
-    public $activitiesTableName = 'activities';
+    protected $activityTable = 'activities';
+
+    public function setActivityTable(string $table)
+    {
+        $this->activityTable = $table;
+    }
+
+    public function getActivityTable()
+    {
+        return $this->activityTable;
+    }
 
     public static function bootRecordsActivity()
     {
