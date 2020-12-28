@@ -130,6 +130,15 @@ class RecordsActivityTest extends TestCase
 
         $post->delete();
 
+        $this->assertDatabaseMissing('activities', [
+            'type' => 'deletado-post',
+            'causer_type' => User::class,
+            'causer_id' => auth()->id(),
+            'subject_id' => $post->id,
+            'subject_type' => Post::class,
+            'changes' => null
+        ]);
+
         $this->assertDatabaseHas('post_activities', [
             'type' => 'deletado-post',
             'causer_type' => User::class,

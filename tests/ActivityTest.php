@@ -14,7 +14,7 @@ class ActivityTest extends TestCase
         $activity = new Activity();
 
         $this->assertEquals([
-            'id' => 'int', 
+            'id' => 'int',
             'changes' => 'array'
         ], $activity->getCasts());
     }

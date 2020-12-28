@@ -4,8 +4,8 @@ namespace Rockbuzz\LaraActivities;
 
 use Illuminate\Support\Arr;
 
-use ReflectionClass;
 use Exception;
+use ReflectionClass;
 use Illuminate\Auth\AuthManager;
 use Illuminate\Database\Eloquent\Model;
 use Rockbuzz\LaraActivities\Contracts\Activity as ActivityInterface;
@@ -22,7 +22,7 @@ class Activities
     {
         $this->auth = $auth;
 
-        $this->authDriver = config('activities.auth_driver') ?? $this->auth->getDefaultDriver();
+        $this->authDriver = config('activities.auth_driver', $this->auth->getDefaultDriver());
     }
 
     public function activityTo(Model $model)
