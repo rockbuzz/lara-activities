@@ -37,7 +37,7 @@ class Post extends Model
     //{
     //    parent::__construct($attributes);
     //
-    //    $this->setActivityTable('post_activities');
+    //    $this->activityTable = 'post_activities';
     //}
 }
 ```
