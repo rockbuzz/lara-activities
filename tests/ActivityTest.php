@@ -8,55 +8,39 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 class ActivityTest extends TestCase
 {
-    public function testActivityCasts()
+    /** @test */
+    public function activity_has_casts()
     {
-        $post = Post::create([
-            'title' => 'Title Test',
-            'content' => 'Content Test'
-        ]);
+        $activity = new Activity();
 
-        $user = User::create([
-            'name' => 'User Test',
-            'email' => 'user.test@email.com',
-            'password' => bcrypt('123456')
-        ]);
-
-        $activity = Activity::create([
-            'type' => 'criado-post',
-            'causer_id' => $user->id,
-            'causer_type' => User::class,
-            'subject_id' => $post->id,
-            'subject_type' => Post::class,
-            'changes' => null
-        ]);
-
-        $this->assertEquals(['id' => 'int', 'changes' => 'array'], $activity->getCasts());
+        $this->assertEquals([
+            'id' => 'int', 
+            'changes' => 'array'
+        ], $activity->getCasts());
     }
 
-    public function testActivityHasSubjectAndCauser()
+    /** @test */
+    public function activity_has_subject()
     {
-        $post = Post::create([
-            'title' => 'Title Test',
-            'content' => 'Content Test'
-        ]);
-
-        $user = User::create([
-            'name' => 'User Test',
-            'email' => 'user.test@email.com',
-            'password' => bcrypt('123456')
-        ]);
-
-        $activity = Activity::create([
-            'type' => 'criado-post',
-            'causer_id' => $user->id,
-            'causer_type' => User::class,
+        $post = factory(Post::class)->create();
+        $activity = factory(Activity::class)->create([
             'subject_id' => $post->id,
-            'subject_type' => Post::class,
-            'changes' => null
+            'subject_type' => Post::class
         ]);
 
         $this->assertInstanceOf(MorphTo::class, $activity->subject());
         $this->assertEquals($post->id, $activity->subject->id);
+    }
+
+    /** @test */
+    public function activity_has_causer()
+    {
+        $user = factory(User::class)->create();
+        $activity = factory(Activity::class)->create([
+            'causer_id' => $user->id,
+            'causer_type' => User::class
+        ]);
+
         $this->assertInstanceOf(MorphTo::class, $activity->causer());
         $this->assertEquals($user->id, $activity->causer->id);
     }

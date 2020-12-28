@@ -20,8 +20,10 @@ class TestCase extends OrchestraTestCase
 
         $this->loadMigrationsFrom([
             '--database' => 'testing',
-            '--path' => realpath(__DIR__ . '/migrations'),
+            '--path' => realpath(__DIR__ . '/database/migrations'),
         ]);
+
+        $this->withFactories(__DIR__ . '/database/factories');
     }
 
 
