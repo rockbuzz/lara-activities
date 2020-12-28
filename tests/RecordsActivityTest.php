@@ -126,7 +126,7 @@ class RecordsActivityTest extends TestCase
 
         $post = Post::whereTitle('Title Test')->firstOrFail();
 
-        $post->setActivityTable('post_activities');
+        $post->activityTable = 'post_activities';
 
         $post->delete();
 

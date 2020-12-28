@@ -14,17 +14,7 @@ trait RecordsActivity
 
     public $old = [];
 
-    protected $activityTable = 'activities';
-
-    public function setActivityTable(string $table)
-    {
-        $this->activityTable = $table;
-    }
-
-    public function getActivityTable()
-    {
-        return $this->activityTable;
-    }
+    public $activityTable = 'activities';
 
     public static function bootRecordsActivity()
     {
