@@ -7,8 +7,12 @@ use Rockbuzz\LaraActivities\Models\Activity;
 
 class ActivitiesController extends Controller
 {
-    public function index()
+    public function index(Activity $activity = null)
     {
+        if ($activity) {
+            return view('activities::details', compact('activity'));
+        }
+
         $builder = Activity::latest();
 
         if ($search = request('search')) {
@@ -24,10 +28,5 @@ class ActivitiesController extends Controller
         $activities = $builder->paginate(50);
 
         return view('activities::index', compact('activities'));
-    }
-
-    public function details(Activity $activity)
-    {
-        return view('activities::details', compact('activity'));
     }
 }

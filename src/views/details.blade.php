@@ -35,14 +35,23 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>{{ $activity->changes ? json_encode($activity->changes) : '' }}</td>
-                            <td>{{ $activity->changes ? json_encode($activity->changes) : '' }}</td>
+                            <td>
+                                <ul>
+                                    @foreach($activity->changes['before'] as $key => $value)
+                                    <li>{{ $key }}: {{ $value }}</li>
+                                    @endforeach
+                                </ul>
+                            </td>
+                            <td>
+                                <ul>
+                                    @foreach($activity->changes['after'] as $key => $value)
+                                    <li>{{ $key }}: {{ $value }}</li>
+                                    @endforeach
+                                </ul>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
-                @if($activities instanceof \Illuminate\Pagination\LengthAwarePaginator )
-                    {{ $activities->appends(request()->query())->links() }}
-                @endif
             </div>
         </div>
     </div>

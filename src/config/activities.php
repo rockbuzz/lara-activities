@@ -91,16 +91,10 @@ return [
 
     'routes' => [
         'index' => [
-            'uri' => 'admin/atividades',
+            'uri' => 'admin/atividades/{activity?}',
             'as' => 'admin.activities',
             'middleware' => ['web', 'auth'],
             'uses' => 'Rockbuzz\LaraActivities\Controllers\ActivitiesController@index'
-        ],
-        'details' => [
-            'uri' => 'admin/atividades/{activity}',
-            'as' => 'admin.activities.details',
-            'middleware' => ['web', 'auth'],
-            'uses' => 'Rockbuzz\LaraActivities\Controllers\ActivitiesController@details'
         ]
     ],
     'views' => [

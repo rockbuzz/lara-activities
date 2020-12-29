@@ -17,7 +17,7 @@
 @section('content')
     <div class="box box-solid">
         <div class="box-header with-border">
-            <h3 class="box-title">Atividades de Recursos Registradas</h3>
+            <h3 class="box-title">Atividades</h3>
         </div>
         <div class="box-body">
             <div class="row">
@@ -42,21 +42,25 @@
                     <thead>
                     <tr>
                         <th>Usuário</th>
-                        <th>Recurso</th>
+                        <th>Recurso: id</th>
                         <th>Acão</th>
-                        <th>Dados</th>
+                        <th>Data</th>
                         <th>Detalhes</th>
                     </tr>
                     </thead>
                     <tbody>
                     @forelse($activities as $activity)
                         <tr>
-                            <td>{{ $activity->causer ? $activity->causer->email : ''}}</td>
+                            <td>{{ $activity->causer ? $activity->causer->email : '--'}}</td>
                             <td>{{ ltrim(strrchr($activity->subject_type, "\\"), "\\") . ': ' . $activity->subject->id }}</td>
                             <td>{{ $activity->type }}</td>
                             <td>{{ $activity->updated_at->format('d/m/Y H:i:s') }}</td>
                             <td>
+                            @if($activity->changes)
                                 <a href="/admin/atividades/{{$activity->id}}">Detalhes</a>
+                            @else
+                                --
+                            @endif
                             </td>
                         </tr>
                     @empty
