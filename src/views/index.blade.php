@@ -45,7 +45,7 @@
                         <th>Recurso</th>
                         <th>Acão</th>
                         <th>Dados</th>
-                        <th>Data</th>
+                        <th>Detalhes</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -54,12 +54,14 @@
                             <td>{{ $activity->causer ? $activity->causer->email : ''}}</td>
                             <td>{{ ltrim(strrchr($activity->subject_type, "\\"), "\\") . ': ' . $activity->subject->id }}</td>
                             <td>{{ $activity->type }}</td>
-                            <td>{{ $activity->changes ? json_encode($activity->changes) : '' }}</td>
                             <td>{{ $activity->updated_at->format('d/m/Y H:i:s') }}</td>
+                            <td>
+                                <a href="/admin/atividades/{{$activity->id}}">Detalhes</a>
+                            </td>
                         </tr>
                     @empty
                         <tr class="text-center">
-                            <td colspan="4">Nenhuma atividade cadastrada até o momento.</td>
+                            <td colspan="5">Nenhuma atividade cadastrada até o momento.</td>
                         </tr>
                     @endforelse
                     </tbody>

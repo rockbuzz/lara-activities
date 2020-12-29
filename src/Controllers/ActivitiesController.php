@@ -25,4 +25,9 @@ class ActivitiesController extends Controller
 
         return view('activities::index', compact('activities'));
     }
+
+    public function details(Activity $activity)
+    {
+        return view('activities::details', compact('activity'));
+    }
 }
