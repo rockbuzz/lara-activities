@@ -3,7 +3,7 @@
 @section('content')
     <div class="box box-solid">
         <div class="box-header with-border">
-            <h3 class="box-title">Atividades</h3>
+            <h3 class="box-title">{{ ucfirst(trans('activities::views.activities')) }}</h3>
         </div>
         <div class="box-body">
             <div class="row">
@@ -13,7 +13,7 @@
                 <div class="col-md-3">
                 <form action="{{ url()->current() }}" method="GET">
                         <div class="input-group">
-                            <input type="text" name="search" placeholder="ID do recurso" class="form-control">
+                            <input type="text" name="search" placeholder="ID {{ ucfirst(trans('activities::views.table.resource')) }}" class="form-control">
                                 <span class="input-group-btn">
                                 <button type="submit" class="btn btn-default btn-flat">
                                     <span class="fa fa-search"></span>
@@ -27,11 +27,11 @@
                 <table class="table table-bordered table-striped">
                     <thead>
                     <tr>
-                        <th>Usuário</th>
-                        <th>Recurso: id</th>
-                        <th>Acão</th>
-                        <th>Em</th>
-                        <th>Dados</th>
+                        <th>{{ ucfirst(trans('activities::views.table.user')) }}</th>
+                        <th>{{ ucfirst(trans('activities::views.table.resource')) }}: id</th>
+                        <th>{{ ucfirst(trans('activities::views.table.action')) }}</th>
+                        <th>{{ ucfirst(trans('activities::views.table.in')) }}</th>
+                        <th>{{ ucfirst(trans('activities::views.table.data')) }}</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -43,7 +43,9 @@
                             <td>{{ $activity->updated_at->format('d/m/Y H:i:s') }}</td>
                             <td>
                             @if($activity->changes)
-                                <a href="{{ route('admin.activities', $activity) }}">Dados</a>
+                                <a href="{{ route('admin.activities', $activity) }}">
+                                    {{ ucfirst(trans('activities::views.table.data')) }}
+                                </a>
                             @else
                                 --
                             @endif
@@ -51,7 +53,7 @@
                         </tr>
                     @empty
                         <tr class="text-center">
-                            <td colspan="5">Nenhuma atividade registrada até o momento.</td>
+                            <td colspan="5">--</td>
                         </tr>
                     @endforelse
                     </tbody>

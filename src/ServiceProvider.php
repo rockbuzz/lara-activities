@@ -29,9 +29,15 @@ class ServiceProvider extends SupportServiceProvider
 
         $this->loadViewsFrom(__DIR__.'/views', 'activities');
 
+        $this->loadTranslationsFrom(__DIR__.'/lang', 'activities');
+
         $this->publishes([
             __DIR__.'/views' => resource_path('views/vendor/activities'),
         ], 'views');
+
+        $this->publishes([
+            __DIR__.'/lang' => resource_path('lang/vendor/activities'),
+        ], 'lang');
     }
 
     public function register()

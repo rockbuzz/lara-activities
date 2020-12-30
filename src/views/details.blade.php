@@ -3,15 +3,17 @@
 @section('content')
     <div class="box box-solid">
         <div class="box-header with-border">
-            <h3 class="box-title">Atividades #{{ $activity->id }}</h3>
+            <h3 class="box-title">
+                {{ ucfirst(trans('activities::views.activity')) }} #{{ $activity->id }}
+            </h3>
         </div>
         <div class="box-body">
             <div class="table-responsive">
                 <table class="table table-bordered table-striped">
                     <thead>
                     <tr>
-                        <th>Antes</th>
-                        <th>Depois</th>
+                        <th>{{ ucfirst(trans('activities::views.before')) }}</th>
+                        <th>{{ ucfirst(trans('activities::views.after')) }}</th>
                     </tr>
                     </thead>
                     <tbody>

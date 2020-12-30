@@ -58,15 +58,15 @@ return [
     */
 
     'identifier' => [
-        'retrieved' => 'recuperado',
-        'created' => 'criado',
-        'updated' => 'atualizado',
-        'saved' => 'salvo',
-        'deleted' => 'deletado',
-        'restored' => 'restaurado',
-        'pivotAttached' => 'anexado',
-        'pivotDetached' => 'desanexado',
-        'pivotUpdated' => 'atualizado Anexo'
+        'retrieved' => 'retrieved',
+        'created' => 'created',
+        'updated' => 'updated',
+        'saved' => 'saved',
+        'deleted' => 'deleted',
+        'restored' => 'restored',
+        'pivotAttached' => 'pivotAttached',
+        'pivotDetached' => 'pivotDetached',
+        'pivotUpdated' => 'pivotUpdated'
     ],
 
     /*
@@ -91,9 +91,9 @@ return [
 
     'routes' => [
         'index' => [
-            'uri' => 'admin/atividades/{activity?}',
+            'uri' => 'admin/activities/{activity?}',
             'as' => 'admin.activities',
-            'middleware' => ['web', 'auth'],
+            'middleware' => ['web'],
             'uses' => 'Rockbuzz\LaraActivities\Controllers\ActivitiesController@index'
         ]
     ],

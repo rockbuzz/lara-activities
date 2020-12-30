@@ -25,7 +25,7 @@ class RecordsActivityTest extends TestCase
         ]);
 
         $this->assertDatabaseHas('activities', [
-            'type' => 'criado-post',
+            'type' => 'created-post',
             'causer_type' => User::class,
             'causer_id' => auth()->id(),
             'subject_id' => $post->id,
@@ -66,7 +66,7 @@ class RecordsActivityTest extends TestCase
         ]);
 
         $this->assertDatabaseHas('activities', [
-            'type' => 'atualizado-post',
+            'type' => 'updated-post',
             'causer_type' => User::class,
             'causer_id' => auth()->id(),
             'subject_id' => $post->id,
@@ -99,7 +99,7 @@ class RecordsActivityTest extends TestCase
         $post->delete();
 
         $this->assertDatabaseHas('activities', [
-            'type' => 'deletado-post',
+            'type' => 'deleted-post',
             'causer_type' => User::class,
             'causer_id' => auth()->id(),
             'subject_id' => $post->id,
@@ -131,7 +131,7 @@ class RecordsActivityTest extends TestCase
         $post->delete();
 
         $this->assertDatabaseMissing('activities', [
-            'type' => 'deletado-post',
+            'type' => 'deleted-post',
             'causer_type' => User::class,
             'causer_id' => auth()->id(),
             'subject_id' => $post->id,
@@ -140,7 +140,7 @@ class RecordsActivityTest extends TestCase
         ]);
 
         $this->assertDatabaseHas('post_activities', [
-            'type' => 'deletado-post',
+            'type' => 'deleted-post',
             'causer_type' => User::class,
             'causer_id' => auth()->id(),
             'subject_id' => $post->id,
