@@ -1,24 +1,5 @@
 @extends(config('activities.views.layout'))
 
-@section('content-header')
-    <h1>Atividades de Recursos</h1>
-    <ol class="breadcrumb">
-        <li>
-            <a href="/admin/dashboard">
-                <i class="fa fa-dashboard"></i>Dashboard
-            </a>
-        </li>
-        <li>
-            <a href="/admin/atividades">
-                <i class="{{ config('style.icons.resources.activities-resources') }}"></i>Atividades
-            </a>
-        </li>
-        <li class="active">
-            <a><i class="{{ config('style.icons.resources.activities-resources') }}"></i>Atividade #{{$activity->id}}</a>
-        </li>
-    </ol>
-@endsection
-
 @section('content')
     <div class="box box-solid">
         <div class="box-header with-border">

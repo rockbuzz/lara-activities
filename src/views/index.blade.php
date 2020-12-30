@@ -1,19 +1,5 @@
 @extends(config('activities.views.layout'))
 
-@section('content-header')
-    <h1>Atividades de Recursos</h1>
-    <ol class="breadcrumb">
-        <li>
-            <a href="/admin/dashboard">
-                <i class="fa fa-dashboard"></i>Dashboard
-            </a>
-        </li>
-        <li class="active">
-            <a><i class="{{ config('style.icons.resources.activities-resources') }}"></i>Atividades de Recursos</a>
-        </li>
-    </ol>
-@endsection
-
 @section('content')
     <div class="box box-solid">
         <div class="box-header with-border">
@@ -44,8 +30,8 @@
                         <th>Usuário</th>
                         <th>Recurso: id</th>
                         <th>Acão</th>
-                        <th>Data</th>
-                        <th>Detalhes</th>
+                        <th>Em</th>
+                        <th>Dados</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -57,7 +43,7 @@
                             <td>{{ $activity->updated_at->format('d/m/Y H:i:s') }}</td>
                             <td>
                             @if($activity->changes)
-                                <a href="/admin/atividades/{{$activity->id}}">Detalhes</a>
+                                <a href="{{ route('admin.activities', $activity) }}">Dados</a>
                             @else
                                 --
                             @endif
@@ -65,7 +51,7 @@
                         </tr>
                     @empty
                         <tr class="text-center">
-                            <td colspan="5">Nenhuma atividade cadastrada até o momento.</td>
+                            <td colspan="5">Nenhuma atividade registrada até o momento.</td>
                         </tr>
                     @endforelse
                     </tbody>
