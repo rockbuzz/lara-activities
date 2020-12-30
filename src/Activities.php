@@ -84,7 +84,7 @@ class Activities
         }
 
         return strtolower(strtr($string, [
-            ':identifier' => trans("activities::identifiers.{$identifier}"),
+            ':identifier' => $identifier,
             ':class' => $className,
             ':relation' => $relationName,
             ':ids' => $pivotIds

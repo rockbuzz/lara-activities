@@ -39,7 +39,12 @@
                         <tr>
                             <td>{{ $activity->causer ? $activity->causer->email : '--'}}</td>
                             <td>{{ ltrim(strrchr($activity->subject_type, "\\"), "\\") . ': ' . $activity->subject->id }}</td>
-                            <td>{{ $activity->type }}</td>
+                            <td>
+                                @php
+                                list($event, $resource) = explode('-', $activity->type);
+                                @endphp
+                                {{ trans('activities::identifiers.'.$event) }}-{{$resource}}
+                            </td>
                             <td>{{ $activity->updated_at->format('d/m/Y H:i:s') }}</td>
                             <td>
                             @if($activity->changes)

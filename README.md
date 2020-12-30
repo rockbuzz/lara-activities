@@ -79,6 +79,11 @@ You can also customize the views
 $ php artisan vendor:publish --provider="Rockbuzz\LaraActivities\ServiceProvider" --tag=views
 ```
 
+You can also customize the lang
+```bash
+$ php artisan vendor:publish --provider="Rockbuzz\LaraActivities\ServiceProvider" --tag=lang
+```
+
 ## License
 
 The Lara Activities is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
