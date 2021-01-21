@@ -1,13 +1,11 @@
-FROM phpdockerio/php72-fpm:latest
+FROM php:7.2.25-fpm-alpine
 
-LABEL maintainer="TiagoDevWeb"
+RUN apk add --no-cache $PHPIZE_DEPS bash
 
-ARG DEBIAN_FRONTEND=noninteractive
-
-RUN apt-get -y update \
-    && apt-get -y --no-install-recommends install php7.2-sqlite3 php-xdebug\
-    && apt-get clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
+RUN pecl install pcov && docker-php-ext-enable pcov
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 WORKDIR /var/www
+
+ENTRYPOINT ["php-fpm"]
