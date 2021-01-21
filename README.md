@@ -2,7 +2,8 @@
 
 Lara Activities is a Laravel package that monitors activities for creating, editing, and deleting features, including manipulations of related tables.
 
-[![Build Status](https://travis-ci.org/rockbuzz/lara-activities.svg?branch=master)](https://travis-ci.org/rockbuzz/lara-activities)
+<p><img src="https://github.com/rockbuzz/lara-activities/workflows/Main/badge.svg"/></p>
+
 
 ## Requirements
 
