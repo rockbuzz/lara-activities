@@ -16,7 +16,7 @@ return [
     |  to create the morph relationship between the activity table and the template
     |  that will record an activity, change this value if you need to override this model.
     |
-    |  Default: \Phwebs\Activities\Models\Activity::class
+    |  Default: \Rockbuzz\LaraActivities\Models\Activity::class
     |
     */
 
@@ -31,7 +31,7 @@ return [
     |
     |  This value is an array with the events that will be monitored by the activities
     |  of the model that implement
-    |  trait \Phwebs\Activities\Traits\RecordsActivity::class.
+    |  trait \Rockbuzz\LaraActivities\Traits\RecordsActivity::class.
     |
     |  Model Values: retrieved, created, updated, saved, deleted, restored
     |  Related Pivot Values: pivotAttached, pivotDetached, pivotUpdated

@@ -10,9 +10,13 @@ class Activity extends Model implements ActivityInterface
 {
     protected $guarded = [];
 
-    protected $with = ['subject'];
+    protected $with = [
+        'subject'
+    ];
 
-    protected $casts = ['changes' => 'array'];
+    protected $casts = [
+        'changes' => 'array'
+    ];
 
     public function subject(): MorphTo
     {

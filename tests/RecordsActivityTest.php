@@ -42,6 +42,8 @@ class RecordsActivityTest extends TestCase
     /** @test */
     public function it_records_activity_when_a_post_is_updated()
     {
+        $this->knownDate();
+
         $user = User::create([
             'name' => 'User Test',
             'email' => 'user.test@email.com',
@@ -54,7 +56,11 @@ class RecordsActivityTest extends TestCase
         DB::table('posts')->insert([
             'title' => 'Title Test',
             'content' => 'Content Test',
-            'published_at' => $publishedAtBefore
+            'published_at' => $publishedAtBefore,
+            'metadata' => json_encode([
+                'public' => false,
+                'plans' => $plansBefore
+            ])
         ]);
 
         $post = Post::whereTitle('Title Test')->firstOrFail();
@@ -62,7 +68,9 @@ class RecordsActivityTest extends TestCase
         $publishedAtAfter = now()->addMinute();
         $post->update([
             'title' => 'Title Change',
-            'published_at' => $publishedAtAfter
+            'published_at' => $publishedAtAfter,
+            'public' => true,
+            'metadata->plans' => $plansAfter = [6, 4, 9]
         ]);
 
         $this->assertDatabaseHas('activities', [
@@ -72,8 +80,22 @@ class RecordsActivityTest extends TestCase
             'subject_id' => $post->id,
             'subject_type' => Post::class,
             'changes' => json_encode([
-                'before' => ['title' => 'Title Test', 'published_at' => $publishedAtBefore->toDateTimeString()],
-                'after' => ['title' => 'Title Change', 'published_at' => $publishedAtAfter->toDateTimeString()]
+                'before' => [
+                    'title' => 'Title Test',
+                    'published_at' => $publishedAtBefore->seconds(0)->toJSON(),
+                    'metadata' => [
+                        'public' => false,
+                        'plans' => $plansBefore
+                    ]
+                ],
+                'after' => [
+                    'title' => 'Title Change',
+                    'published_at' => $publishedAtAfter->seconds(0)->toJSON(),
+                    'metadata' => [
+                        'public' => true,
+                        'plans' => $plansAfter
+                    ]
+                ]
             ])
         ]);
     }

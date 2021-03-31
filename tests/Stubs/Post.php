@@ -9,7 +9,30 @@ class Post extends Model
 {
     use RecordsActivity;
 
-    protected $fillable = ['title', 'content', 'published_at'];
+    protected $fillable = [
+        'title',
+        'content',
+        'published_at',
+        'public',
+        'metadata->plans'
+    ];
 
-    protected $dates = ['published_at'];
+    public $casts = [
+        'metadata' => 'array'
+    ];
+
+    protected $dates = [
+        'published_at'
+    ];
+
+    public function setPublicAttribute($value): void
+    {
+        $metadata = is_array($this->metadata) ? $this->metadata : [];
+        $this->attributes['metadata'] = json_encode(array_merge($metadata ?? [], ['public' => $value]));
+    }
+
+    public function getPublicAttribute(): bool
+    {
+        return (bool)$this->metadata['public'];
+    }
 }

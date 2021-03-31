@@ -47,7 +47,6 @@ class Activities
 
     public function recordActivity(Model $model, string $event, string $relationName = null, array $pivotIds = null)
     {
-    
         $activity = $this->activity;
 
         $activity->type = $this->getType($model, $event, $relationName, $pivotIds);
@@ -65,9 +64,11 @@ class Activities
 
     protected function activityChanges($event, $model)
     {
+        $keys = array_keys(Arr::except($model->getChanges(), 'updated_at'));
+
         return 'updated' === $event ? [
-            'before' => Arr::except(array_diff_assoc($model->old, $model->getAttributes()), 'updated_at'),
-            'after' => Arr::except($model->getChanges(), 'updated_at')
+            'before' => Arr::only($model->old, $keys),
+            'after' => Arr::only($model->toArray(), $keys)
         ] : null;
     }
 

@@ -11,24 +11,24 @@
             <div class="table-responsive">
                 <table class="table table-bordered table-striped">
                     <thead>
-                    <tr>
-                        <th>{{ ucfirst(trans('activities::views.before')) }}</th>
-                        <th>{{ ucfirst(trans('activities::views.after')) }}</th>
-                    </tr>
+                        <tr>
+                            <th>{{ ucfirst(trans('activities::views.before')) }}</th>
+                            <th>{{ ucfirst(trans('activities::views.after')) }}</th>
+                        </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td>
                                 <ul>
                                     @foreach($activity->changes['before'] as $key => $value)
-                                    <li>{{ $key }}: {{ $value }}</li>
+                                        <li>{{ $key }}: {{ is_array($value) ? json_encode($value, JSON_PRETTY_PRINT) : $value }}</li>
                                     @endforeach
                                 </ul>
                             </td>
                             <td>
                                 <ul>
                                     @foreach($activity->changes['after'] as $key => $value)
-                                    <li>{{ $key }}: {{ $value }}</li>
+                                        <li>{{ $key }}: {{ is_array($value) ? json_encode($value, JSON_PRETTY_PRINT) : $value }}</li>
                                     @endforeach
                                 </ul>
                             </td>
