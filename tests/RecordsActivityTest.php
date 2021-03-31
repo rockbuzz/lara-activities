@@ -59,7 +59,7 @@ class RecordsActivityTest extends TestCase
             'published_at' => $publishedAtBefore,
             'metadata' => json_encode([
                 'public' => false,
-                'plans' => $plansBefore
+                'plans' => $plansBefore = [1, 2, 5]
             ])
         ]);
 
