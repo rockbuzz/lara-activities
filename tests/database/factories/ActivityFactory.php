@@ -3,7 +3,7 @@
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
 use Faker\Generator as Faker;
-use Tests\Stubs\{Post, User};
+use Tests\Models\{Post, User};
 use Rockbuzz\LaraActivities\Models\Activity;
 
 $factory->define(Activity::class, function (Faker $faker) {

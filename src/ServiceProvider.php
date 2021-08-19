@@ -10,7 +10,7 @@ class ServiceProvider extends SupportServiceProvider
     public function boot(Filesystem $filesystem)
     {
         $projectPath = database_path('migrations') . '/';
-        $localPath = __DIR__ . '/database/migrations/';
+        $localPath = __DIR__ . '/../database/migrations/';
 
         if (! $this->hasMigrationInProject($projectPath, $filesystem)) {
             $this->loadMigrationsFrom($localPath . '2019_02_21_000000_create_activities_table.php');
@@ -22,7 +22,7 @@ class ServiceProvider extends SupportServiceProvider
         }
 
         $this->publishes([
-            __DIR__ . '/config/activities.php' => config_path('activities.php')
+            __DIR__ . '/../config/activities.php' => config_path('activities.php')
         ], 'config');
 
         $this->loadRoutesFrom(__DIR__.'/routes.php');
@@ -44,7 +44,7 @@ class ServiceProvider extends SupportServiceProvider
     {
         $this->app->bind(Activities::class);
 
-        $this->mergeConfigFrom(__DIR__ . '/config/activities.php', 'activities');
+        $this->mergeConfigFrom(__DIR__ . '/../config/activities.php', 'activities');
     }
 
     private function hasMigrationInProject(string $path, Filesystem $filesystem)

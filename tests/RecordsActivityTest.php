@@ -2,7 +2,7 @@
 
 namespace Tests;
 
-use Tests\Stubs\{Post, User};
+use Tests\Models\{Post, User};
 use Illuminate\Support\Facades\DB;
 use Rockbuzz\LaraActivities\Models\Activity;
 

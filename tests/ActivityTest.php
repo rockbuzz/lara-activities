@@ -2,7 +2,7 @@
 
 namespace Tests;
 
-use Tests\Stubs\{Post, User};
+use Tests\Models\{Post, User};
 use Rockbuzz\LaraActivities\Models\Activity;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 

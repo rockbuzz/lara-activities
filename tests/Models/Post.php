@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Stubs;
+namespace Tests\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Rockbuzz\LaraActivities\Traits\RecordsActivity;
