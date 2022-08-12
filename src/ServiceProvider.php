@@ -4,6 +4,7 @@ namespace Rockbuzz\LaraActivities;
 
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\ServiceProvider as SupportServiceProvider;
+use Rockbuzz\LaraActivities\Console\PruneCommand;
 
 class ServiceProvider extends SupportServiceProvider
 {
@@ -38,6 +39,10 @@ class ServiceProvider extends SupportServiceProvider
         $this->publishes([
             __DIR__.'/lang' => resource_path('lang/vendor/activities'),
         ], 'lang');
+
+        if ($this->app->runningInConsole()) {
+            $this->commands([PruneCommand::class]);
+        }
     }
 
     public function register()
